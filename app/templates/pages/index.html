@@ -1,0 +1,86 @@
+{% extends "../base.html" %}
+
+{% block title %}2048 - Играй в Telegram{% endblock %}
+
+{% block content %}
+<div class="heading">
+    <h1 class="title">2048</h1>
+    <div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+    </div>
+</div>
+
+<div class="above-game">
+    <p class="game-intro">Объедини плитки и получи <strong>плитку 2048!</strong></p>
+    <a class="restart-button">Новая игра</a>
+</div>
+
+<div class="game-container">
+    <div class="game-message">
+        <p></p>
+        <div class="lower">
+            <a class="retry-button">Попробовать еще раз</a>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+    </div>
+
+    <div class="tile-container"></div>
+</div>
+
+<!-- Управление стрелками для мобильных устройств -->
+<div class="mobile-controls">
+    <div class="control-row">
+        <button class="control-btn" data-direction="up">↑</button>
+    </div>
+    <div class="control-row">
+        <button class="control-btn" data-direction="left">←</button>
+        <button class="control-btn" data-direction="down">↓</button>
+        <button class="control-btn" data-direction="right">→</button>
+    </div>
+</div>
+
+<p class="game-explanation">
+    <strong class="important">КАК ИГРАТЬ:</strong> Используй <strong>стрелки клавиатуры</strong> или <strong>кнопки управления</strong> чтобы перемещать плитки. Когда две плитки с одинаковыми числами соприкасаются, они <strong>объединяются в одну!</strong>
+</p>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="/static/js/bind_polyfill.js"></script>
+<script src="/static/js/classlist_polyfill.js"></script>
+<script src="/static/js/animframe_polyfill.js"></script>
+<script src="/static/js/keyboard_input_manager.js"></script>
+<script src="/static/js/html_actuator.js"></script>
+<script src="/static/js/grid.js"></script>
+<script src="/static/js/tile.js"></script>
+<script src="/static/js/local_storage_manager.js"></script>
+<script src="/static/js/game_manager.js"></script>
+<script src="/static/js/application.js"></script>
+<script src="/static/js/telegram_integration.js"></script>
+{% endblock %}

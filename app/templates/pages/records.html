@@ -1,0 +1,161 @@
+{% extends "../base.html" %}
+
+{% block title %}Лидеры 2048{% endblock %}
+
+{% block content %}
+<div class="heading">
+    <h1 class="title">🏆 Лидеры 2048</h1>
+</div>
+
+<div class="leaderboard-container">
+    {% if top_players %}
+        <div class="leaderboard">
+            {% for player in top_players %}
+            <div class="leader-item {% if player.rank <= 3 %}top-{{ player.rank }}{% endif %}">
+                <div class="rank">
+                    {% if player.rank == 1 %}🥇
+                    {% elif player.rank == 2 %}🥈  
+                    {% elif player.rank == 3 %}🥉
+                    {% else %}{{ player.rank }}{% endif %}
+                </div>
+                <div class="player-info">
+                    <div class="player-name">{{ player.first_name or 'Игрок' }}</div>
+                </div>
+                <div class="score">{{ player.best_score }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-leaderboard">
+            <p>🎮 Пока никто не играл!</p>
+            <p>Будь первым, кто установит рекорд!</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="game-actions">
+    <a href="/" class="play-button">🎮 Играть в 2048</a>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.leaderboard-container {
+    max-width: 500px;
+    margin: 20px auto;
+    background: #faf8ef;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.leader-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.leader-item.top-1 {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    font-weight: bold;
+}
+
+.leader-item.top-2 {
+    background: linear-gradient(135deg, #c0c0c0, #e5e5e5);
+    font-weight: bold;
+}
+
+.leader-item.top-3 {
+    background: linear-gradient(135deg, #cd7f32, #daa520);
+    font-weight: bold;
+}
+
+.rank {
+    font-size: 20px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+}
+
+.player-info {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.player-name {
+    font-size: 16px;
+    color: #776e65;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f9f6f2;
+    background: #8f7a66;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.empty-leaderboard {
+    text-align: center;
+    padding: 40px 20px;
+    color: #776e65;
+    font-size: 16px;
+}
+
+.game-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.play-button {
+    display: inline-block;
+    background: #8f7a66;
+    color: #f9f6f2;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.play-button:hover {
+    background: #9f8a76;
+}
+
+@media (max-width: 520px) {
+    .leaderboard-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .leader-item {
+        padding: 12px;
+    }
+
+    .rank {
+        font-size: 18px;
+        min-width: 35px;
+    }
+
+    .player-name {
+        font-size: 14px;
+    }
+
+    .score {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+</style>
+{% endblock %}

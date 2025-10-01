@@ -1,0 +1,187 @@
+/* Дополнительные стили для Telegram WebApp */
+
+/* Мобильные элементы управления */
+.mobile-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.control-row {
+  display: flex;
+  gap: 10px;
+}
+
+.control-btn {
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 8px;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control-btn:hover,
+.control-btn:active {
+  background: #9f8a76;
+  transform: scale(0.95);
+}
+
+.control-btn:focus {
+  outline: none;
+}
+
+/* Адаптация для Telegram WebApp */
+body {
+  background: var(--tg-theme-bg-color, #faf8ef);
+  color: var(--tg-theme-text-color, #776e65);
+}
+
+/* Улучшения для мобильной версии */
+@media screen and (max-width: 520px) {
+  .mobile-controls {
+    margin: 15px 0;
+  }
+
+  .control-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .game-explanation {
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  .above-game {
+    margin-bottom: 20px;
+  }
+
+  .game-intro {
+    font-size: 14px;
+  }
+}
+
+/* Анимация появления */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  animation: fade-in 0.3s ease-in;
+}
+
+/* Скрытие элементов при загрузке */
+.loading .game-container {
+  opacity: 0.5;
+}
+
+/* Кнопки для WebApp */
+.webapp-button {
+  display: inline-block;
+  background: var(--tg-theme-button-color, #8f7a66);
+  color: var(--tg-theme-button-text-color, #f9f6f2);
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.webapp-button:hover {
+  opacity: 0.8;
+}
+
+/* Стили для страницы рекордов */
+.records-page {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.leader-board {
+  background: #bbada0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.leader-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f9f6f2;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.leader-item:last-child {
+  margin-bottom: 0;
+}
+
+.leader-rank {
+  font-weight: bold;
+  color: #8f7a66;
+  min-width: 40px;
+}
+
+.leader-name {
+  flex-grow: 1;
+  margin-left: 15px;
+  color: #776e65;
+}
+
+.leader-score {
+  font-weight: bold;
+  color: #8f7a66;
+}
+
+/* Топ-3 выделение */
+.leader-item.rank-1 {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+}
+
+.leader-item.rank-2 {
+  background: linear-gradient(135deg, #c0c0c0, #e5e5e5);
+}
+
+.leader-item.rank-3 {
+  background: linear-gradient(135deg, #cd7f32, #daa520);
+}
+
+/* Загрузка */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #8f7a66;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
